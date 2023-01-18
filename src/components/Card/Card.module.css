@@ -1,0 +1,116 @@
+.box {
+	width: 100%;
+}
+
+.card {
+	position: relative;
+	width: 250px;
+	height: 300px;
+	background: #f0f2eb;
+	margin: 2rem auto;
+	border-radius: 4px;
+	box-shadow: 0 2px 10px #262626;
+}
+.card:before,
+.card:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 4px;
+	background: #f0f2eb;
+	transition: 0.5s;
+	z-index: -1;
+}
+.card:hover:before {
+	transform: rotate(20deg);
+	box-shadow: 0 2px 20px #35d0f2;
+}
+.card:hover:after {
+	transform: rotate(10deg);
+	box-shadow: 0 2px 20px #a2dd5e;
+}
+
+.imgFav {
+	width: 30px;
+	cursor: pointer;
+	position: absolute;
+	top: 2%;
+	left: 10px;
+}
+
+.imgdelete {
+	width: 30px;
+	cursor: pointer;
+	position: absolute;
+	top: 2%;
+	left: 210px;
+}
+
+.card .imgBx {
+	position: absolute;
+	top: 40px;
+	left: 10px;
+	bottom: 10px;
+	right: 10px;
+	background: #262626;
+	transition: 0.5s;
+	z-index: 1;
+}
+
+.card:hover .imgBx {
+	bottom: 80px;
+}
+
+.card .imgBx .imgChr {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.card .details {
+	position: absolute;
+	left: 10px;
+	right: 10px;
+	bottom: 20px;
+	height: 60px;
+	text-align: center;
+}
+
+.card .details h2 {
+	margin: 10px 0 -8px 0;
+	padding: 0;
+	font-weight: 600;
+	font-size: 18px;
+	color: #262626;
+	text-transform: uppercase;
+}
+
+.card .details h2 span {
+	margin: 5px 0 15px 0;
+	color: #f38695;
+	font-size: 14px;
+	display: flex;
+	flex-direction: column;
+	margin-top: 5px;
+}
+
+.x {
+	color: #262626;
+	background-color: #a2dd5e;
+	border: 1px solid #262626;
+	border-radius: 5px;
+	box-shadow: 0 0.5px 2px #262626;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.x:hover {
+	box-shadow: 0 2px 5px #35d0f2;
+}
