@@ -1,0 +1,213 @@
+/* @import url('../../assets/Fonts/Rick_and_Morty.ttf'); */
+.body {
+	background-color: #262626;
+	height: 100vh;
+}
+
+.imgMenuNav {
+	width: 2rem;
+	height: 2rem;
+	margin-left: 1rem;
+	margin-right: 2rem;
+	cursor: pointer;
+}
+
+.morty {
+	position: absolute;
+	top: 110px;
+}
+.hair {
+	position: absolute;
+	left: 590px;
+	top: 30px;
+	width: 270px;
+	height: 160px;
+	background: #8a4d18;
+	border-radius: 50% 50% 20% 20%;
+	border: 3px solid;
+}
+.face {
+	position: absolute;
+	left: 600px;
+	top: 70px;
+	width: 250px;
+	height: 250px;
+	background: #ffd2a1;
+	border-radius: 47%;
+	border: 3px solid;
+}
+.ears {
+	position: absolute;
+	left: 576px;
+	top: 170px;
+	background: #ffd2a1;
+	height: 35px;
+	width: 30px;
+	border-radius: 50% 10% 10% 50%;
+	border: 2px solid;
+}
+.ears::after {
+	content: '';
+	position: absolute;
+	left: 267px;
+	top: 0px;
+	background: #ffd2a1;
+	height: 35px;
+	width: 30px;
+	border-radius: 10% 50% 50% 10%;
+	border: 2px solid;
+}
+.eyes {
+	position: absolute;
+	top: 130px;
+	left: 630px;
+	width: 70px;
+	height: 70px;
+	background: white;
+	border-radius: 50%;
+	border: 2px solid;
+}
+.eyes::after {
+	content: '';
+	position: absolute;
+	top: 0px;
+	left: 120px;
+	width: 70px;
+	height: 70px;
+	background: white;
+	border-radius: 50%;
+	border: 2px solid;
+}
+.eyes::before {
+	content: '';
+	position: absolute;
+	top: 33px;
+	left: 30px;
+	width: 10px;
+	height: 10px;
+	background: black;
+	border-radius: 50%;
+	z-index: 50;
+	box-shadow: 120px 0px;
+	animation: anim2 2s infinite;
+}
+.mouth {
+	position: absolute;
+	top: 250px;
+	left: 705px;
+	height: 20px;
+	width: 12px;
+	border: 2px solid black;
+	border-top: 0px;
+	border-radius: 0px 0px 45px 45px;
+	transform: rotatez(10deg);
+}
+.mouth::after {
+	content: '';
+	position: absolute;
+	top: 7px;
+	left: 11.5px;
+	height: 20px;
+	width: 12px;
+	border: 2px solid black;
+	border-top: 0px;
+	border-radius: 0px 0px 45px 45px;
+	animation: anim 0.5s infinite;
+	transform-origin: -5% -10%;
+}
+.nose {
+	position: absolute;
+	top: 200px;
+	left: 715px;
+	height: 20px;
+	width: 15px;
+	border: 2px solid black;
+	border-top: 0px;
+	border-radius: 0px 0px 45px 45px;
+	transform: rotatez(0deg);
+}
+.lines {
+	position: absolute;
+	top: 116px;
+	left: 643px;
+	height: 2px;
+	width: 50px;
+	border: 3.2px solid black;
+	border-top: 0px;
+	border-left: 0px;
+	border-right: 0px;
+	border-radius: 0px 0px 50% 50%;
+	transform: rotatez(170deg);
+}
+.lines::before {
+	content: '';
+	position: absolute;
+	top: -22px;
+	right: 120px;
+	height: 2px;
+	width: 50px;
+	border: 3.2px solid black;
+	border-top: 0px;
+	border-left: 0px;
+	border-right: 0px;
+	border-radius: 0px 0px 50% 50%;
+	transform: rotatez(20deg);
+}
+.h2 {
+	position: absolute;
+	top: 160px;
+	left: 450px;
+	margin: 0px;
+	color: white;
+	font-size: 200px;
+	font-family: 'Rick and Morty font';
+}
+.four {
+	position: absolute;
+	top: 160px;
+	left: 900px;
+	margin: 0px;
+	color: white;
+	font-size: 200px;
+	font-family: 'Rick and Morty font';
+}
+.h1 {
+	position: absolute;
+	top: 430px;
+	left: 580px;
+	margin: 0px;
+	color: white;
+	font-size: 100px;
+	font-family: 'Rick and Morty font';
+}
+@keyframes anim {
+	0% {
+		transform: rotatez(0deg);
+	}
+	50% {
+		transform: rotatez(-10deg);
+	}
+	100% {
+		transform: rotatez(0deg);
+	}
+}
+@keyframes anim2 {
+	0% {
+		transform: translatex(-20px);
+	}
+	50% {
+		transform: translatex(20px);
+	}
+	100% {
+		transform: translatex(-20px);
+	}
+}
+.h3 {
+	position: absolute;
+	top: 0px;
+	left: 560px;
+	font-size: 50px;
+	font-family: 'Rick and Morty font';
+	color: white;
+	width: 400px;
+}

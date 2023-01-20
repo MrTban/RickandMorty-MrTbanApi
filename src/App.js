@@ -10,10 +10,11 @@ import About from './components/About/About';
 import Detail from './components/Detail/Detail';
 import Form from './components/Form/Form';
 import Favorites from './components/Favorites/Favorites';
+import Error404 from './components/Error404/Error404';
 
 function App() {
 	const [access, setAccess] = useState(false);
-	const username = 'esteban34a@henry.com';
+	const username = 'esteban34a@studenthenry.com';
 	const password = 'tbanFt34a';
 	const navigate = useNavigate();
 
@@ -58,6 +59,8 @@ function App() {
 
 	return (
 		<div className='App'>
+			{location.pathname === '/:Error404' ? <Error404 /> : null}
+
 			{location.pathname === '/' ? null : (
 				<img src={ImgIntro} className={style.imgintro} />
 			)}
@@ -75,12 +78,12 @@ function App() {
 					path='/home'
 					element={<Cards characters={characters} onClose={onClose} />}
 				/>
-				<Route path='/about' element={<About />} />
+				<Route exact path='/about' element={<About />} />
 				<Route
 					path='/favorites'
 					element={<Favorites characters={characters} onClose={onClose} />}
 				/>
-				<Route path='/detail/:detailId' element={<Detail />} />
+				<Route exact path='/detail/:detailId' element={<Detail />} />
 			</Routes>
 			<img src={ImgOut} className={style.imgouttro} />
 		</div>
