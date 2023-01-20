@@ -14,19 +14,19 @@ function Card(props) {
 
 	const myFavorites = useSelector((s) => s.myFavorites);
 
-	const handleFavorite = (id) => {
+	const handleFavorite = (char) => {
 		if (isFav) {
 			setIsFav(false);
-			dispatch(removeFavorites(id));
+			dispatch(removeFavorites(char.id));
 		} else {
 			setIsFav(true);
-			dispatch(addFavorites(id));
+			dispatch(addFavorites(char));
 		}
 	};
 
 	useEffect(() => {
-		myFavorites.forEach((id) => {
-			if (id === props.id) {
+		myFavorites.forEach((char) => {
+			if (char.id === props.id) {
 				setIsFav(true);
 			}
 		});
@@ -40,14 +40,14 @@ function Card(props) {
 						src={ImgFav}
 						alt={`Añadir a favoritos ${props.name}`}
 						className={style.imgFav}
-						onClick={() => handleFavorite(props.id)}
+						onClick={() => handleFavorite(props)}
 					/>
 				) : (
 					<img
 						src={ImgAddFav}
 						alt={`Añadir a favoritos ${props.name}`}
 						className={style.imgFav}
-						onClick={() => handleFavorite(props.id)}
+						onClick={() => handleFavorite(props)}
 					/>
 				)}
 

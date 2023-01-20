@@ -3,3 +3,10 @@
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
+
+.titleFav {
+	text-align: center;
+	font-family: 'Rick and Morty font';
+	color: #35d0f2;
+	text-shadow: 5px 5px 10px #262626;
+}

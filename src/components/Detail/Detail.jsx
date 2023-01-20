@@ -26,6 +26,7 @@ const Detail = () => {
 
 	return (
 		<div className={style.box}>
+			<h1 className={style.titleDetails}>Details</h1>
 			<div className={style.detail}>
 				<div>
 					<img

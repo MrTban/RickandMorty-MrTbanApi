@@ -18,3 +18,11 @@ body {
 	margin-top: 5rem;
 	margin-bottom: -1rem;
 }
+
+@font-face {
+	font-family: 'Rick and Morty font';
+	font-style: normal;
+	font-weight: normal;
+	src: local('Rick and Morty font'),
+		url('./assets/Fonts/Rick_and_Morty.ttf') format('woff');
+}

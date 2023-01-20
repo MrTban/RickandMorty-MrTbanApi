@@ -2,6 +2,13 @@
 	width: 100%;
 }
 
+.titleDetails {
+	text-align: center;
+	font-family: 'Rick and Morty font';
+	color: #35d0f2;
+	text-shadow: 5px 5px 10px #262626;
+}
+
 .detail {
 	position: relative;
 	width: 50rem;
@@ -13,6 +20,10 @@
 	padding: 20px;
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.detail h1 {
+	/* font-family: 'Rick and Morty font'; */
 }
 
 .imgChtr {
