@@ -10,3 +10,47 @@
 	color: #35d0f2;
 	text-shadow: 5px 5px 10px #262626;
 }
+
+.imgMenuNav {
+	width: 2rem;
+	height: 2rem;
+	margin-left: 1rem;
+	margin-right: 2rem;
+	cursor: pointer;
+}
+
+.customSelect {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 2rem;
+	width: 100%;
+	padding: 2rem 0 2rem 0;
+}
+
+.caja {
+	border: 2px solid #a2dd5e;
+	height: fit-content;
+	overflow: hidden;
+	width: 12rem;
+	position: relative;
+	border-radius: 24px;
+	text-align: center;
+	font-size: 16px;
+	font-weight: 550;
+	transition: 0.25s;
+	box-shadow: 0 2px 10px #262626;
+	color: #f0f2eb;
+}
+
+select {
+	background: transparent;
+	padding: 5px;
+}
+
+select option {
+	background-color: #615edb;
+	color: #f0f2eb;
+	font-weight: 550;
+}

@@ -13,10 +13,13 @@ import Favorites from './components/Favorites/Favorites';
 import Error404 from './components/Error404/Error404';
 
 function App() {
+	const location = useLocation();
+	const navigate = useNavigate();
+	const [characters, setCharacters] = useState([]);
 	const [access, setAccess] = useState(false);
+
 	const username = 'esteban34a@studenthenry.com';
 	const password = 'tbanFt34a';
-	const navigate = useNavigate();
 
 	const login = (userData) => {
 		if (userData.password === password && userData.username === username) {
@@ -31,10 +34,6 @@ function App() {
 	useEffect(() => {
 		!access && navigate('/');
 	}, [access]);
-
-	const location = useLocation();
-
-	const [characters, setCharacters] = useState([]);
 
 	const onSearch = (character) => {
 		fetch(`https://rickandmortyapi.com/api/character/${character}`)
