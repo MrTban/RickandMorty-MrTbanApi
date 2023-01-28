@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import style from './Detail.module.css';
 
 const Detail = () => {
@@ -9,7 +9,7 @@ const Detail = () => {
 	const [character, setCharacter] = useState({});
 
 	useEffect(() => {
-		fetch(`https://rickandmortyapi.com/api/character/${detailId}`)
+		fetch(`http://localhost:3001/rickandmorty/detail/${detailId}`)
 			.then((response) => response.json())
 			.then((char) => {
 				if (char.name) {

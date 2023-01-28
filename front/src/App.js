@@ -35,9 +35,6 @@ function App() {
 		!access && navigate('/');
 	}, [access]);
 
-	//http://localhost:3001/rickandmorty
-	//https://rickandmortyapi.com/api/character/${character}
-
 	const onSearch = (character) => {
 		fetch(`http://localhost:3001/rickandmorty/character/${character}`)
 			.then((response) => response.json())

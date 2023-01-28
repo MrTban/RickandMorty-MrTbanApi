@@ -5,18 +5,33 @@ import {
 	ORDER,
 	RESET,
 } from './action_type';
+import axios from 'axios';
 
 export const addFavorites = (char) => {
-	return {
-		type: ADD_FAVORITES,
-		payload: char,
+	return function (dispatch) {
+		axios
+			.post(`http://localhost:3001/rickandmorty/fav`, char)
+			.then((response) => response.data)
+			.then((data) => {
+				dispatch({
+					type: ADD_FAVORITES,
+					payload: data,
+				});
+			});
 	};
 };
 
 export const removeFavorites = (id) => {
-	return {
-		type: REMOVE_FAVORITES,
-		payload: id,
+	return function (dispatch) {
+		axios
+			.delete(`http://localhost:3001/rickandmorty/fav/${id}`)
+			.then((response) => response.data)
+			.then((data) => {
+				dispatch({
+					type: REMOVE_FAVORITES,
+					payload: id,
+				});
+			});
 	};
 };
 

@@ -15,7 +15,7 @@ function SearchBar({ onSearch }) {
 			<img
 				src={ImgRandom}
 				className={style.imgsearch}
-				alt={'Agregar un personaje aleatorio'}
+				alt='Agregar un personaje aleatorio'
 				// onClick={() => onSearch(character)}
 			/>
 			<input
