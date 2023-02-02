@@ -18,16 +18,13 @@ function App() {
 	const [characters, setCharacters] = useState([]);
 	const [access, setAccess] = useState(false);
 
-	const username = 'esteban34a@studenthenry.com';
-	const password = 'tbanFt34a';
+	const username = 'mrtban@gmail.com';
+	const password = 'MrTban123';
 
 	const login = (userData) => {
-		if (userData.password === password && userData.username === username) {
+		if (userData.username === username && userData.password === password) {
 			setAccess(true);
 			navigate('/home');
-			alert('Hola de nuevo!');
-		} else {
-			alert('username ó password incorrectos');
 		}
 	};
 
@@ -50,6 +47,7 @@ function App() {
 					window.alert('No hay personajes con ese ID');
 				}
 			});
+		// .catch((err) => console.log(err.message));
 	};
 
 	const onClose = (id) => {
@@ -58,8 +56,6 @@ function App() {
 
 	return (
 		<div className='App'>
-			{location.pathname === '/:Error404' ? <Error404 /> : null}
-
 			{location.pathname === '/' ? null : (
 				<img src={ImgIntro} className={style.imgintro} />
 			)}
@@ -67,9 +63,7 @@ function App() {
 				<img src={ImgIntroLogin} className={style.imgintrologin} />
 			) : null}
 
-			<div>
-				{location.pathname === '/' ? null : <Nav onSearch={onSearch} />}
-			</div>
+			<div>{location.pathname === '/' ? null : <Nav onSearch={onSearch} />}</div>
 
 			<Routes>
 				<Route path='/' element={<Form login={login} />} />
@@ -83,6 +77,7 @@ function App() {
 					element={<Favorites characters={characters} onClose={onClose} />}
 				/>
 				<Route exact path='/detail/:detailId' element={<Detail />} />
+				<Route path='/*' element={<Error404 />} />
 			</Routes>
 			<img src={ImgOut} className={style.imgouttro} />
 		</div>

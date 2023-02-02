@@ -8,30 +8,32 @@ import {
 import axios from 'axios';
 
 export const addFavorites = (char) => {
-	return function (dispatch) {
-		axios
-			.post(`http://localhost:3001/rickandmorty/fav`, char)
-			.then((response) => response.data)
-			.then((data) => {
-				dispatch({
-					type: ADD_FAVORITES,
-					payload: data,
-				});
-			});
+	return async function (dispatch) {
+		const response = await axios.post(
+			`http://localhost:3001/rickandmorty/fav`,
+			char
+		);
+		const data = response.data;
+
+		return dispatch({
+			type: ADD_FAVORITES,
+			payload: data,
+		});
 	};
 };
 
 export const removeFavorites = (id) => {
-	return function (dispatch) {
-		axios
-			.delete(`http://localhost:3001/rickandmorty/fav/${id}`)
-			.then((response) => response.data)
-			.then((data) => {
-				dispatch({
-					type: REMOVE_FAVORITES,
-					payload: id,
-				});
-			});
+	return async function (dispatch) {
+		const response = await axios.delete(
+			`http://localhost:3001/rickandmorty/fav/${id}`
+		);
+
+		const data = response.data;
+
+		return dispatch({
+			type: REMOVE_FAVORITES,
+			payload: id,
+		});
 	};
 };
 

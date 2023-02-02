@@ -41,32 +41,30 @@ const Form = (inputs) => {
 			>
 				<h2 className={style.formTitle}>Sing-In</h2>
 				<input
-					required=''
+					required
 					className={errors.username && 'warning'}
 					type='text'
 					name='username'
+					autoComplete='off'
 					placeholder='Username'
 					value={userData.username}
 					onChange={(event) => handleInputChange(event)}
 				/>
 				<br />
-				{errors.username && (
-					<p className='danger'>&#x26A0; {errors.username}</p>
-				)}
+				{errors.username && <p className='danger'>&#x26A0; {errors.username}</p>}
 
 				<input
-					required=''
+					required
 					className={errors.password && 'warning'}
-					type='text'
+					type='password'
 					name='password'
+					autoComplete='off'
 					placeholder='Password'
 					value={userData.password}
 					onChange={(event) => handleInputChange(event)}
 				/>
 				<br />
-				{errors.password && (
-					<p className='danger'>&#x26A0; {errors.password}</p>
-				)}
+				{errors.password && <p className='danger'>&#x26A0; {errors.password}</p>}
 				{Object.keys(errors).length === 0 ? (
 					<button type='submit' className={style.button}>
 						<span>Login</span>
