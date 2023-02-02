@@ -1,25 +1,12 @@
-// const http = require('http');
-// const {
-// 	sendNotFound,
-// 	getCharById,
-// 	getCharDetail,
-// } = require('../controllers/controllers');
+const express = require('express');
+const app = express();
+const routes = require('./index');
+const cors = require('cors');
 
-// const PORT = 3001;
+app.use(cors());
 
-// //
+app.use(express.json());
 
-// http
-// 	.createServer((req, res) => {
-// 		res.setHeader('Access-Control-Allow-Origin', '*');
+app.use('/', routes);
 
-// 		let id = req.url.split('/').at(-1);
-
-// 		if (req.url.includes('onsearch')) {
-// 			getCharById(res, id);
-// 		}
-// 		if (req.url.includes('detail')) {
-// 			getCharDetail(res, id);
-// 		}
-// 	})
-// 	.listen(PORT, 'localhost');
+module.exports = app;
