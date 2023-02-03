@@ -12,12 +12,12 @@ function SearchBar({ onSearch }) {
 
 	return (
 		<div className={style.searchbar}>
-			<img
+			{/* <img
 				src={ImgRandom}
 				className={style.imgsearch}
 				alt='Agregar un personaje aleatorio'
 				// onClick={() => onSearch(character)}
-			/>
+			/> */}
 			<input
 				type='text'
 				name='search'
