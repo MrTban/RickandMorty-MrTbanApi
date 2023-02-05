@@ -1,18 +1,9 @@
-import {
-	ADD_FAVORITES,
-	REMOVE_FAVORITES,
-	FILTER,
-	ORDER,
-	RESET,
-} from './action_type';
+import { ADD_FAVORITES, REMOVE_FAVORITES, FILTER, ORDER, RESET } from './action_type';
 import axios from 'axios';
 
 export const addFavorites = (char) => {
 	return async function (dispatch) {
-		const response = await axios.post(
-			`http://localhost:3001/rickandmorty/fav`,
-			char
-		);
+		const response = await axios.post(`http://localhost:3001/rickandmorty/fav`, char);
 		const data = response.data;
 
 		return dispatch({
@@ -24,11 +15,7 @@ export const addFavorites = (char) => {
 
 export const removeFavorites = (id) => {
 	return async function (dispatch) {
-		const response = await axios.delete(
-			`http://localhost:3001/rickandmorty/fav/${id}`
-		);
-
-		const data = response.data;
+		await axios.delete(`http://localhost:3001/rickandmorty/fav/${id}`);
 
 		return dispatch({
 			type: REMOVE_FAVORITES,

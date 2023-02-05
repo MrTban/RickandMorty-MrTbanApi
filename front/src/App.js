@@ -11,6 +11,7 @@ import Detail from './components/Detail/Detail';
 import Form from './components/Form/Form';
 import Favorites from './components/Favorites/Favorites';
 import Error404 from './components/Error404/Error404';
+import axios from 'axios';
 
 function App() {
 	const location = useLocation();
@@ -32,38 +33,70 @@ function App() {
 		!access && navigate('/');
 	}, [access]);
 
-	const onSearch = (character) => {
-		fetch(`http://localhost:3001/rickandmorty/character/${character}`)
-			.then((response) => response.json())
-			.then((data) => {
+	const onSearch = async (character) => {
+		try {
+			if (!isNaN(character)) {
+				const response = await axios(
+					`http://localhost:3001/rickandmorty/character/${character}`
+				);
+				const data = response.data;
 				if (data.name) {
 					let exist = characters.find((e) => e.id === data.id);
 					if (exist) {
-						alert('Este personaje ya existe');
+						throw new Error('Este personaje ya existe');
 					} else {
 						setCharacters((oldChars) => [...oldChars, data]);
 					}
 				} else {
-					window.alert('No hay personajes con ese ID');
+					throw new Error('No hay personajes con ese ID');
 				}
-			});
-		// .catch((err) => console.log(err.message));
+			} else {
+				const response = await axios(
+					`http://localhost:3001/rickandmorty/character/?name=${character}`
+				);
+				const data = response.data;
+				if (data.length) {
+					setCharacters([]);
+					data.map((char) => setCharacters((oldChars) => [...oldChars, char]));
+				} else {
+					throw new Error('No hay personajes con ese nombre');
+				}
+			}
+		} catch (error) {
+			window.alert(error.message);
+		}
 	};
 
 	const onClose = (id) => {
 		setCharacters(characters.filter((character) => character.id !== id));
 	};
+	const onClear = () => setCharacters([]);
+
+	const onRandom = () => {
+		let nroRand = Math.floor(Math.random() * 827);
+		let cardFound = (nroR) => characters.filter((card) => card.id === nroR).length !== 0;
+
+		while (cardFound(nroRand)) {
+			nroRand = Math.floor(Math.random() * 827);
+		}
+
+		onSearch(nroRand);
+	};
 
 	return (
 		<div className='App'>
 			{location.pathname === '/' ? null : (
-				<img src={ImgIntro} className={style.imgintro} />
+				<img src={ImgIntro} className={style.imgintro} alt={'imgintro'} />
 			)}
 			{location.pathname === '/' ? (
-				<img src={ImgIntroLogin} className={style.imgintrologin} />
+				<img src={ImgIntroLogin} className={style.imgintrologin} alt={'imgintrologin'} />
 			) : null}
 
-			<div>{location.pathname === '/' ? null : <Nav onSearch={onSearch} />}</div>
+			<div>
+				{location.pathname === '/' ? null : (
+					<Nav onSearch={onSearch} onRandom={onRandom} onClear={onClear} />
+				)}
+			</div>
 
 			<Routes>
 				<Route path='/' element={<Form login={login} />} />
@@ -79,7 +112,7 @@ function App() {
 				<Route exact path='/detail/:detailId' element={<Detail />} />
 				<Route path='/*' element={<Error404 />} />
 			</Routes>
-			<img src={ImgOut} className={style.imgouttro} />
+			<img src={ImgOut} className={style.imgouttro} alt={'imgouttro'} />
 		</div>
 	);
 }

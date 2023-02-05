@@ -6,7 +6,7 @@ import ImgHome from '../../assets/home.png';
 import ImgAbout from '../../assets/about.png';
 import ImgFavs from '../../assets/favs.png';
 
-function Nav({ onSearch }) {
+function Nav({ onSearch, onRandom, onClear }) {
 	return (
 		<nav>
 			<div className={style.navbar}>
@@ -27,7 +27,7 @@ function Nav({ onSearch }) {
 					<img className={style.imgMenuNav} src={ImgFavs} alt='Favorites' />
 				</Link>
 			</div>
-			<SearchBar onSearch={onSearch} />
+			<SearchBar onSearch={onSearch} onRandom={onRandom} onClear={onClear} />
 		</nav>
 	);
 }
