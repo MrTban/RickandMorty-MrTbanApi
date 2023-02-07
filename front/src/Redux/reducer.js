@@ -1,9 +1,10 @@
 import {
 	ADD_FAVORITES,
 	REMOVE_FAVORITES,
-	FILTER,
+	FILTERGENDER,
 	ORDER,
 	RESET,
+	FILTERSPECIES,
 } from './action_type';
 
 const initialState = {
@@ -26,12 +27,19 @@ const rootReducer = (state = initialState, { type, payload }) => {
 				myFavorites: filtered,
 				allCharacters: filtered,
 			};
-		case FILTER:
-			const filterCopy = [...state.allCharacters];
-			const filter = filterCopy.filter((char) => char.gender === payload);
+		case FILTERGENDER:
+			const filterCopyGender = [...state.allCharacters];
+			const filterGender = filterCopyGender.filter((char) => char.gender === payload);
 			return {
 				...state,
-				myFavorites: filter,
+				myFavorites: filterGender,
+			};
+		case FILTERSPECIES:
+			const filterCopySpecies = [...state.allCharacters];
+			const filterSpecies = filterCopySpecies.filter((char) => char.species === payload);
+			return {
+				...state,
+				myFavorites: filterSpecies,
 			};
 		case ORDER:
 			const orderCopy = [...state.allCharacters];

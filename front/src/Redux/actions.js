@@ -1,4 +1,11 @@
-import { ADD_FAVORITES, REMOVE_FAVORITES, FILTER, ORDER, RESET } from './action_type';
+import {
+	ADD_FAVORITES,
+	REMOVE_FAVORITES,
+	FILTERGENDER,
+	ORDER,
+	RESET,
+	FILTERSPECIES,
+} from './action_type';
 import axios from 'axios';
 
 export const addFavorites = (char) => {
@@ -24,9 +31,16 @@ export const removeFavorites = (id) => {
 	};
 };
 
-export const filterCards = (status) => {
+export const filterGender = (status) => {
 	return {
-		type: FILTER,
+		type: FILTERGENDER,
+		payload: status,
+	};
+};
+
+export const filterSpecies = (status) => {
+	return {
+		type: FILTERSPECIES,
 		payload: status,
 	};
 };

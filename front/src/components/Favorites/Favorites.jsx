@@ -1,6 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { filterCards, orderCards, reset } from '../../Redux/actions';
+import {
+	filterGender,
+	orderCards,
+	reset,
+	filterSpecies,
+	filterStatus,
+} from '../../Redux/actions';
 import Card from '../Card/Card';
 import style from './Favorites.module.css';
 import ImgReset from '../../assets/reset.png';
@@ -13,8 +19,11 @@ function Favorites(props) {
 	const handleClick = (e) => {
 		e.preventDefault();
 		const { name, value } = e.target;
-		if (name === 'filter') {
-			return dispatch(filterCards(value));
+		if (name === 'filterGender') {
+			return dispatch(filterGender(value));
+		}
+		if (name === 'filterSpecies') {
+			return dispatch(filterSpecies(value));
 		}
 		if (name === 'order') {
 			return dispatch(orderCards(value));
@@ -38,7 +47,7 @@ function Favorites(props) {
 					<option value='Descendente'>Descending</option>
 				</select>
 				<select
-					name='filter'
+					name='filterGender'
 					className={style.caja}
 					defaultValue={'DEFAULT'}
 					onChange={handleClick}
@@ -49,9 +58,26 @@ function Favorites(props) {
 					<option value='Male'>Male</option>
 					<option value='Female'>Female</option>
 					<option value='Genderless'>Genderless</option>
-					<option value='unknown'>unknown</option>
+					<option value='unknown'>Unknown</option>
 				</select>
-				{/* <button onClick={() => dispatch(reset())}>RESET</button> */}
+				<select
+					name='filterSpecies'
+					className={style.caja}
+					defaultValue={'DEFAULT'}
+					onChange={handleClick}
+				>
+					<option value='DEFAULT' disabled>
+						Select Species
+					</option>
+					<option value='Alien'>Alien</option>
+					<option value='Animal'>Animal</option>
+					<option value='Cronenberg'>Cronenberg</option>
+					<option value='Human'>Human</option>
+					<option value='Humanoid'>Humanoid</option>
+					<option value='Mythological Creature'>Mythological Creature</option>
+					<option value='Robot'>Robot</option>
+				</select>
+
 				<img
 					src={ImgReset}
 					className={style.imgMenuNav}
