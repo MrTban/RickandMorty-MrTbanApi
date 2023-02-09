@@ -1,6 +1,16 @@
-const axios = require('axios');
+const { getAllCharacters } = require('../controllers/getAllCharacters');
 
 let fav = [];
+
+const getAll = async (req, res) => {
+	try {
+		const allCharacters = await getAllCharacters();
+
+		res.status(200).json(allCharacters);
+	} catch (error) {
+		res.status(404).send('Hubo un problema');
+	}
+};
 
 const getFav = (req, res) => {
 	res.status(200).json(fav);
@@ -32,4 +42,5 @@ module.exports = {
 	getFav,
 	postFav,
 	deleteFavId,
+	getAll,
 };
