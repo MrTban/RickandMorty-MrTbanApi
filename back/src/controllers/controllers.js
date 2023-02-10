@@ -1,46 +1,62 @@
-const { getAllCharacters } = require('../controllers/getAllCharacters');
+// const getAllCharacters = require('../controllers/getAllCharacters');
+// const getAllFavorites = require('./getAllFavorites');
+// const deleteFavoriteById = require('./deleteFavoriteById');
 
-let fav = [];
+// const getAll = async (req, res) => {
+// 	try {
+// 		const allCharacters = await getAllCharacters();
 
-const getAll = async (req, res) => {
-	try {
-		const allCharacters = await getAllCharacters();
+// 		res.status(200).json(allCharacters);
+// 	} catch (error) {
+// 		res.status(404).send('Hubo un problema');
+// 	}
+// };
 
-		res.status(200).json(allCharacters);
-	} catch (error) {
-		res.status(404).send('Hubo un problema');
-	}
-};
+// const getFav = async (req, res) => {
+// 	try {
+// 		const allFavorites = await getAllFavorites();
 
-const getFav = (req, res) => {
-	res.status(200).json(fav);
-};
+// 		if (allFavorites.error) throw new Error(allFavorites.error);
 
-const postFav = (req, res) => {
-	fav.push(req.body);
-	res.status(200).json(req.body);
-	// res.status(200).send('Se guardaron correctamente los datos');
-};
+// 		res.status(200).json(allFavorites);
+// 	} catch (error) {
+// 		res.status(404).send(error.message);
+// 	}
+// };
 
-const deleteFavId = (req, res) => {
-	const { id } = req.params;
-	const character = fav.find((ch) => ch.id === Number(id));
-	if (character) {
-		fav = fav.filter((f) => f.id !== Number(id));
-		res.status(200).send(`El personaje con id:${id} fue eliminado de fav`);
-	} else {
-		res.status(400).send('El personaje no existe');
-	}
-};
+// const postFav = async (req, res) => {
+// 	try {
+// 		const characterFav = await postFavChar(req.body);
 
-const sendNotFound = async (res) => {
-	res.status(404).end('Route not found');
-};
+// 		if (characterFav.error) throw new Error(characterFav.error);
 
-module.exports = {
-	sendNotFound,
-	getFav,
-	postFav,
-	deleteFavId,
-	getAll,
-};
+// 		return res.status(200).json(characterFav);
+// 	} catch (error) {
+// 		res.status(404).send(error.message);
+// 	}
+// };
+
+// const deleteFavId = async (req, res) => {
+// 	try {
+// 		const { id } = req.params;
+// 		const deleteFavorite = await deleteFavoriteById(id);
+
+// 		if (deleteFavorite.error) throw new Error(deleteFavorite.error);
+
+// 		return res.status(200).json(deleteFavorite);
+// 	} catch (error) {
+// 		return res.status(404).send(error.message);
+// 	}
+// };
+
+// const sendNotFound = async (res) => {
+// 	res.status(404).end('Route not found');
+// };
+
+// module.exports = {
+// 	sendNotFound,
+// 	getFav,
+// 	postFav,
+// 	deleteFavId,
+// 	getAll,
+// };

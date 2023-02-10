@@ -8,7 +8,6 @@ database
 	.sync({ force: true })
 	.then(async () => {
 		console.log('Database connected');
-		// console.log(await saveApiData());
 		await saveApiData();
 		console.log('ApiData loaded');
 		app.listen(PORT, () => {

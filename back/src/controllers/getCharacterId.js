@@ -4,9 +4,7 @@ const getCharacterId = async (req, res) => {
 	const { id } = req.params;
 
 	try {
-		const result = await axios(
-			`https://rickandmortyapi.com/api/character/${id}`
-		);
+		const result = await axios(`https://rickandmortyapi.com/api/character/${id}`);
 		const characterApi = result.data;
 
 		const characterId = {

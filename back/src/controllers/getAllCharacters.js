@@ -10,4 +10,4 @@ const getAllCharacters = async () => {
 	}
 };
 
-module.exports = { getAllCharacters };
+module.exports = getAllCharacters;
