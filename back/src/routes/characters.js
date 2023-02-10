@@ -1,7 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const getCharacterId = require('../controllers/getCharacterId');
-const getDetailId = require('../controllers/getDetailId');
 const postFav = require('../controllers/postFav');
 const getAllCharacters = require('../controllers/getAllCharacters');
 const getAllFavorites = require('../controllers/getAllFavorites');
@@ -13,23 +11,61 @@ router.get('/allCharacters', async (req, res) => {
 
 		res.status(200).json(allCharacters);
 	} catch (error) {
-		res.status(404).send('Hubo un problema');
+		res.status(404).send('Hubo un problemilla');
 	}
 });
 
-router.get('/character/:id', getCharacterId);
+router.get('/character/:id', async (req, res) => {
+	try {
+		const { id } = req.params;
 
-router.get('/detail/:detailId', getDetailId);
+		const response = await axios(`https://rickandmortyapi.com/api/character/${id}`);
+		const data = response.data;
 
-router.get('/fav', async (req, res) => {
+		const infoCharacter = {
+			id: data.id,
+			name: data.name,
+			species: data.species,
+			gender: data.gender,
+			image: data.image,
+		};
+
+		res.status(200).json(infoCharacter);
+	} catch (error) {
+		res.status(404).send(error.message);
+	}
+});
+
+router.get('/detail/:detailId', async (req, res) => {
+	try {
+		const { detailId } = req.params;
+
+		const { data } = await axios(`https://rickandmortyapi.com/api/character/${detailId}`);
+
+		const infoCharacterDetail = {
+			name: data.name,
+			status: data.status,
+			species: data.species,
+			gender: data.gender,
+			origin: data.origin,
+			image: data.image,
+		};
+
+		res.status(200).json(infoCharacterDetail);
+	} catch (error) {
+		res.status(404).send(error.message);
+	}
+});
+
+router.post('/fav', async (req, res) => {
 	try {
 		const allFavorites = await getAllFavorites();
 
 		if (allFavorites.error) throw new Error(allFavorites.error);
 
-		res.status(200).json(allFavorites);
+		return res.status(200).json(allFavorites);
 	} catch (error) {
-		res.status(404).send(error.message);
+		return res.status(404).send(error.message);
 	}
 });
 
@@ -39,20 +75,20 @@ router.post('/fav', async (req, res) => {
 
 		if (characterFav.error) throw new Error(characterFav.error);
 
-		return res.status(200).json(characterFav);
+		res.status(200).json(characterFav);
 	} catch (error) {
-		res.status(404).send(error.message);
+		return res.status(404).send(error.message);
 	}
 });
 
 router.delete('/fav/:id', async (req, res) => {
 	try {
 		const { id } = req.params;
-		const deleteFavorite = await deleteFavoriteById(id);
+		const deleteFavorite = await deleteFavoriteById(parseInt(id));
 
 		if (deleteFavorite.error) throw new Error(deleteFavorite.error);
 
-		return res.status(200).json(deleteFavorite);
+		return res.status(200).send(deleteFavorite);
 	} catch (error) {
 		return res.status(404).send(error.message);
 	}

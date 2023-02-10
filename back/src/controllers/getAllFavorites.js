@@ -2,9 +2,9 @@ const { Favorite } = require('../db/db');
 
 const getAllFavorites = async () => {
 	try {
-		const allFavorites = await Favorite.findAll;
+		const allFavorites = await Favorite.findAll();
 
-		if (!allFavorites) throw new Error('No hay favoritos');
+		if (!allFavorites) throw new Error('No hay Favoritos =(');
 
 		return allFavorites;
 	} catch (error) {

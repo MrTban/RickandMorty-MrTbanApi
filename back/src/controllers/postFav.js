@@ -5,7 +5,7 @@ const postFav = async (character) => {
 		const { name, status, species, gender, origin, image } = character;
 
 		if (!name || !status || !species || !gender || !origin || !image)
-			throw new Error('Faltan datos obligatorios');
+			throw new Error('Faltan datos obligatorios, master');
 
 		const newFav = {
 			name,
