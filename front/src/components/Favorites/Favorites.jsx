@@ -1,12 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-	filterGender,
-	orderCards,
-	reset,
-	filterSpecies,
-	filterStatus,
-} from '../../Redux/actions';
+import { filterGender, orderCards, reset, filterSpecies } from '../../Redux/actions';
 import Card from '../Card/Card';
 import style from './Favorites.module.css';
 import ImgReset from '../../assets/reset.png';

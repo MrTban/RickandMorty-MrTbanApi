@@ -52,7 +52,7 @@ function App() {
 				}
 			} else {
 				const response = await axios(
-					`http://localhost:3001/rickandmorty/character/?name=${character}`
+					`http://localhost:3001/rickandmorty/character?name=${character}`
 				);
 				const data = response.data;
 				if (data.length) {
